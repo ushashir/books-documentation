@@ -1,9 +1,12 @@
 // Book Contructor
-function Book (title, author, isbn){
+function Book (title, author, isbn, publisher, year){
     this.title = title;
     this.author = author;
     this.isbn = isbn;
+    this.publisher = publisher;
+    this.year = year;
 }
+
 // UI Constructor
 function UI (){};
 UI.prototype.addBookToList = function (book){
@@ -13,6 +16,8 @@ const row = document.createElement('tr'); // Create tr element
         <td>${book.title}</td>
         <td>${book.author}</td>
         <td>${book.isbn}</td>
+        <td>${book.publisher}</td>
+        <td>${book.year}</td>
         <td><a href="#" class="delete">X</td>
     `;                                          //  Insert cols
 list.appendChild(row);
@@ -41,6 +46,8 @@ UI.prototype.clearField = function(){
     document.getElementById('title').value = '';
     document.getElementById('author').value = '';
     document.getElementById('isbn').value = '';
+    document.getElementById('publisher').value = '';
+    document.getElementById('year').value = '';
 }
 
 // Local Storage
@@ -91,10 +98,13 @@ function (e) {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const isbn = document.getElementById('isbn').value;
+    const publisher = document.getElementById('publisher').value;
+    const year = document.getElementById('year').value;
 
-const book = new Book (title, author, isbn);  // Instanciate Book 
+// Instanciate Book
+const book = new Book (title, author, isbn, publisher, year);   
 const ui = new UI();  // Instanciate UI
-if (title === '' || author === '' || isbn === '') { 
+if (title === '' || author === '' || isbn === '' || publisher === '' || year === '') { 
    ui.showAlert('Please fill in all fields');
 } else {
     ui.addBookToList(book);  // Add book to list

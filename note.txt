@@ -1,0 +1,7 @@
+Continuity note
+improve the project to includde all bibliographic details
+publisher
+year of publication
+pages
+
+create a database to link up
